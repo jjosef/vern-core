@@ -20,7 +20,9 @@ program
   .option('controller, --controller <name>', 'Create a controller when inside a project folder', buildController)
   .option('route, --route <path>', 'Create a route when inside a project folder', buildRoute)
   .option('model, --model <name>', 'Create a model when inside a project folder', buildModel)
-  .option('view, --viewl <name>', 'Create a view when inside a project folder', buildView)
+  .option('view, --view <name>', 'Create a view when inside a project folder', buildView)
+  .option('deploy, --deploy <stage>', 'Create a view when inside a project folder', deployApp)
+  .option('config, --config', 'Configure your app when inside a project folder', configApp)
   .parse(process.argv);
 
 function buildProject(path, overwrite) {
@@ -67,6 +69,8 @@ function copyProject(path) {
       }
 
       console.log('Created ' + (path + '/vern.json').green);
+      // Now we will prompt the user to start adding base routes, controllers, and models.
+      // We can also setup a deployment strategy(ies)
     });
   });
 }
@@ -84,5 +88,13 @@ function buildModel(name) {
 }
 
 function buildView(name) {
+
+}
+
+function deployApp(stage) {
+
+}
+
+function configApp() {
 
 }
