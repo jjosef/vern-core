@@ -1,0 +1,43 @@
+{
+  "name": "vern-core",
+  "version": "0.0.1",
+  "description": "VERN is the virtual elastic resource node. The new method for creating websites. Built on a Mongo/Restify/AngularJS/LESS Stack. SEO Manager included.",
+  "main": "lib/index.js",
+  "bin": {
+    "vern": "./bin/vern"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uh-sem-blee/vern-core"
+  },
+  "keywords": [
+    "vern",
+    "mvc",
+    "rest",
+    "api",
+    "api",
+    "angularjs",
+    "mongodb",
+    "less",
+    "framework",
+    "platform"
+  ],
+  "author": "uh-sem-blee",
+  "license": "Propritary",
+  "bugs": {
+    "url": "https://github.com/uh-sem-blee/vern-core/issues"
+  },
+  "homepage": "https://github.com/uh-sem-blee/vern-core",
+  "devDependencies": {},
+  "dependencies": {
+    "fs-extra": "~0.8.1",
+    "commander": "~2.1.0",
+    "prompt": "~0.2.12"
+  }
+}
