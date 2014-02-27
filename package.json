@@ -21,7 +21,6 @@
     "mvc",
     "rest",
     "api",
-    "api",
     "angularjs",
     "mongodb",
     "less",
@@ -38,6 +37,18 @@
   "dependencies": {
     "fs-extra": "~0.8.1",
     "commander": "~2.1.0",
-    "prompt": "~0.2.12"
+    "prompt": "~0.2.12",
+    "validator": "latest",
+    "optimist": "latest",
+    "papercut": "latest",
+    "nodemailer": "latest",
+    "email-templates": "latest",
+    "mongodb": "latest",
+    "restify": "latest",
+    "slugify": "latest",
+    "node-uuid": "~1.4.1",
+    "node.extend": "~1.0.9",
+    "colors": "^0.6.2",
+    "q": "^1.0.0"
   }
 }
