@@ -1,6 +1,6 @@
 {
   "name": "vern-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "VERN is the virtual elastic resource node. The new method for creating websites. Built on a Mongo/Restify/AngularJS/LESS Stack. SEO Manager included.",
   "main": "lib/index.js",
   "bin": {
@@ -28,7 +28,7 @@
     "platform"
   ],
   "author": "uh-sem-blee",
-  "license": "Propritary",
+  "license": "Copyright 2014 uh-sem-blee, Co.",
   "bugs": {
     "url": "https://github.com/uh-sem-blee/vern-core/issues"
   },

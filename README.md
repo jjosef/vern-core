@@ -1,3 +1,11 @@
+#Copyright Notice
+
+VERN is copyright 2014 uh-sem-blee, Co. Built by typefoo.
+
+#License
+
+You may not use, alter, or redistribute this code without permission from uh-sem-blee, Co.
+
 # VERN Core
 
 The VERN core is a new methodology for building website. The central idea behind VERN is processing distribution. Processing is performed client-side whenever possible, thus reducing the load on servers enabling them to scale further. Most websites today rely on some kind of application layer to serve content. These layers perform parsing which is extremely taxing and results in the need for caching and other solutions. VERN solves this problem.
@@ -6,7 +14,13 @@ The only issue this presents is for SEO in web applications. If your project nee
 
 ## Install
 
-`npm install -g vern`
+For the library
+
+`npm install vern-core`
+
+For the CLI tool
+
+`npm install -g vern-core`
 
 ## Usage
 
