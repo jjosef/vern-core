@@ -57,7 +57,7 @@ git commit -m "#_issue_number_ _component_name_ _description_of_commit_"
 * Once you believe your issue is resolved, perform a pull request from your forked repo page.
 * We will review your request and integrate the necessary pieces into core.
 
-## Usage
+## CLI Usage
 
 You will use VERN inside your server to create routes, controllers, and models.
 
@@ -66,3 +66,7 @@ You will use VERN inside your server to create routes, controllers, and models.
 You will use VERN inside your client to create views which connect to your API server.
 
 [EXAMPLE]
+
+## Library Usage
+
+See the /lib folder README
