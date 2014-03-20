@@ -26,21 +26,21 @@ For the CLI tool
 
 Contributing to vern-core can be done via your own forked repository
 
-1. [Fork the repo](https://github.com/uh-sem-blee/vern-core/fork)
-2. Clone the repo to your local machine
+* [Fork the repo](https://github.com/uh-sem-blee/vern-core/fork)
+* Clone the repo to your local machine
 
 ```
 git clone <your-forked-repo-url>
 ```
 
-3. Add the master source to your remote list for pulling updates easily
+* Add the master source to your remote list for pulling updates easily
 
 ```
 git remote add core git@github.com:uh-sem-blee/vern-core.git
 ```
 
-4. When you need to update perform a `git pull core master`
-5. Create issues with the following formats:
+* When you need to update perform a `git pull core master`
+* Create issues with the following formats:
 
 ```
 [feature] _component_name_ _short_description_
@@ -48,14 +48,14 @@ git remote add core git@github.com:uh-sem-blee/vern-core.git
 [bug] _component_name_ _short_description_
 ```
 
-6. When committing ensure your messages correspond with your issue. This practice ensures commits are made with relevant information and can easily be tracked.
+* When committing ensure your messages correspond with your issue. This practice ensures commits are made with relevant information and can easily be tracked.
 
 ```
 git commit -m "#_issue_number_ _component_name_ _description_of_commit_"
 ```
 
-7. Once you believe your issue is resolved, perform a pull request from your forked repo page.
-8. We will review your request and integrate the necessary pieces into core.
+* Once you believe your issue is resolved, perform a pull request from your forked repo page.
+* We will review your request and integrate the necessary pieces into core.
 
 ## Usage
 
