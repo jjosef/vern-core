@@ -1,31 +1,79 @@
 # Base Model
 
-**.extend()**
+**model.extend()**
 This function extends a model onto a another
 
 Params:
 
-* `constructor` The object you are extending with [object]
-* `options` The options for the object [object]
-* `options.collection` The collection to use [string]
-* `options.validations` The key/value pairs for validation rules [object]
-* `options.exclude` The array of names of which keys to exclude from output [array]
-* `options.indexes` The array of names of which keys to register as indexes [array]
-* `superConstructor` The super constructor to base the model off [object]
+* `constructor` Required. The object you are extending [object]
+* `options` Required. The options for the object [object]
+* `options.collection` Optional/Required if no superConstructor supplied. The datastore collection name to use [string]
+* `options.validations` Optional. The key/value pairs for validation rules [object]
+* `options.exclude` Optional. The array of names of which keys to exclude from .output() function calls [array]
+* `options.indexes` Optional. The array of names of which keys to register as datastore indexes [array]
+* `superConstructor` Optional. The super constructor to base the model off [object]
 
-**.update()**
+**model.update(arguments)**
 
-This is the basic update function. An `_id` is required to perform this task.
+Updates the data model with the arguments passed. It will only update parameters that are defined in model schema.
 
-**.save()**
+Example:
 
-This is the basic save function. It validates data types and creates an `_id` for the object before saving it to the database
+```javascript
+new PostModel().update({
+  title: req.params.title,
+  author: req.user._id,
+  body: req.params.body
+});
+```
 
-**.getbyid()**
+Typically a model is created with this function being called by default. So passing an object argument to the `new PostModel(params)` will accomplish the same thing.
 
-This function queries the database for an object with a matching `_id` to the one given.
+**model.save(function(err, model))**
 
-**getBy[field_name]()**
+Having an `_id` in your object will attempt to update an existing object, otherwise a new object is created in the datastore.
 
-The functions get created when you extend the model. It looks at whatever field names are in your model and creates a function for that field name
+Example:
 
+```javascript
+new PostModel({
+  title: req.params.title,
+  author: req.user._id,
+  body: req.params.body
+}).save(function(err, model) {
+  if(err) {
+    return res.resp.handleError(500, 'An internal error occurred');
+  }
+
+  res.resp.data(model.output());
+  res.resp.send();
+});
+```
+
+**model.output()**
+
+Returns the desired output after parsing out any `exclude`'d params and excluding anything with a double-underscore `__` prefixing it as well.
+
+**model.getById(id, function(err, model))**
+
+This function queries the datastore for an object with the specified `id` and returns an error or model or null if no model is found.
+
+Example:
+
+```javascript
+new PostModel().getById(id, function(err, model) {
+  if(err) {
+    return res.resp.handleError(500, 'An error occurred getting the PostModel');
+  }
+
+  if(!model) {
+    return res.resp.handleError(404, 'PostModel not found');
+  }
+
+  // else do something with the model.
+});
+```
+
+**getBy`field_name`(value, function(err, models))**
+
+The functions get created when you extend the BaseModel. It looks at whatever field names are in your model and creates a function for that field name. It will ignore fields that start with an underscore.
