@@ -1,7 +1,7 @@
 # Base Model
 
 **model.extend()**
-This function extends a model onto a another
+This function extends the BaseModel into a new model passed to this function. It also creates a subset of `getBy*` functions based on the parameters of the new model.
 
 Params:
 
@@ -12,6 +12,28 @@ Params:
 * `options.exclude` Optional. The array of names of which keys to exclude from .output() function calls [array]
 * `options.indexes` Optional. The array of names of which keys to register as datastore indexes [array]
 * `superConstructor` Optional. The super constructor to base the model off [object]
+
+Example:
+
+```javascript
+  function PostModel() {
+    this.title = null;
+    this.author = null;
+    this.body = null;
+
+    this.update(arguments[0]);
+  }
+
+  $vern.models.PostModel = new $vern.model().extend(PostModel, {
+    collection: 'posts',
+    validations: {
+      title: 'notEmpty',
+      body: 'notEmpty'
+    },
+    exclude: [],
+    indexes: ['author']
+  });
+```
 
 **model.update(arguments)**
 
