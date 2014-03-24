@@ -109,6 +109,7 @@ You can create new vern models simply by calling `new $vern.model().extend(...);
     function MyModel() {
       this.name = null;
       this.description = null;
+      return this.update(arguments[0]);
     }
 
     $vern.models.MyModel = new $vern.model().extend(...);
@@ -122,17 +123,19 @@ You can create new vern models simply by calling `new $vern.model().extend(...);
 ## Creating Controllers
 To create a controller, just call for a `new $vern.controller();` like this:
 
-    $vern.controllers.MyController = new $vern.controller();
-    var ctrl = new MyController($vern).init({
-      models: MyModel,
-      adminRoute: '/admin/mymodels', // administrative access only
-      userRoute: '/account/mymodels', // authenticated access only
-      publicRoute: '/mymodels', // public GET access
-      publicPostRoute: '/mymodels', // public POST access
-      publicDeleteRoute: '/mymodels', // public DELETE access
-      permissions: [] // permissions setup in role definitions
-      publicPermissions: [] // permissions required for user only routes
-    });
+```javascript
+$vern.controllers.MyController = new $vern.controller()
+ .init({
+    model: MyModel,
+    adminRoute: '/admin/mymodels', // administrative access only
+    userRoute: '/account/mymodels', // authenticated access only
+    publicRoute: '/mymodels', // public GET access
+    publicPostRoute: '/mymodels', // public POST access
+    publicDeleteRoute: '/mymodels', // public DELETE access
+    permissions: [] // permissions setup in role definitions
+    publicPermissions: [] // permissions required for user only routes
+ });
+```
 
 
 

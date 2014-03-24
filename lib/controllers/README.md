@@ -1,16 +1,6 @@
 ## BaseController
 The BaseController handles essential CRUD operations ad allows routes to be setup.
 
-**Dependencies**
-* Path - the Node.JS module for transforming file path strings
-
-* FS - Node.JS File System module, allows the reading and writing of files
-
-* [Node.Extend](https://github.com/dreamerslab/node.extend) - A port jQuery.Extend for Node.JS
-
-* Q - Module for making asynchronous promises
-
-* [Validator](https://github.com/chriso/validator.js) - A library of string validators and sanitizers
 
 **Configuration**
 
