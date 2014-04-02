@@ -73,7 +73,7 @@ The `data` argument is an object typically consisting of the following:
 
 ```js
 {
-  object: {}, // for post, put, and delete this is the object your modifying. for a get request, this is the configuration passed to listForTableData
+  object: {}, // for post, put, and delete this is the object you're modifying. for a get request, this is the configuration passed to listForTableData
   objects: [], // list of objects for 'get' 'after'
   req: req, // the request object
   res: res, // the response object
