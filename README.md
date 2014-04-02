@@ -57,6 +57,36 @@ git commit -m "#_issue_number_ _component_name_ _description_of_commit_"
 * Once you believe your issue is resolved, perform a pull request from your forked repo page.
 * We will review your request and integrate the necessary pieces into core.
 
+## Middleware
+
+Vern has a middleware system for interacting with requests. There are your typical `get`, `put`, `post`, `delete` and a few new ones vern handles like `sum` and `total`. Each of these methods also has a `before` and `after` sub-method. These functions are applied with the `.use` method from BaseController. They can be applied inside a controller, or at the prototype level.
+
+Example:
+
+```js
+$scope.use('get', 'before', function(data, callback) {
+  return callback(null, data);
+});
+```
+
+The `data` argument is an object typically consisting of the following:
+
+```js
+{
+  object: {}, // for post, put, and delete this is the object your modifying. for a get request, this is the configuration passed to listForTableData
+  objects: [], // list of objects for 'get' 'after'
+  req: req, // the request object
+  res: res, // the response object
+  $scope: $scope // the controller scope
+}
+```
+
+The `callback` argument should be passed two variables, an `error` if there is one, and the modified `data` object passed to the function.
+
+Caveats:
+
+The `sum` and `total` methods take the `data` argument as the respective sum or total. This is different from the usual object that is passed to these functions.
+
 ## CLI Usage
 
 You will use VERN inside your server to create routes, controllers, and models.
