@@ -87,6 +87,33 @@ Caveats:
 
 The `sum` and `total` methods take the `data` argument as the respective sum or total. This is different from the usual object that is passed to these functions.
 
+**Extending Middleware**
+
+Extending new modules with middleware can be done within a controller by calling addUsage('process', 'when') and then setting up a function within your module like so:
+
+```js
+$scope.afterAuthCreate = function(data, callback) {
+  var promises = [];
+  for(var i = 0; i < $scope.initStack['auth-create']['after'].length; i++) {
+    promises.push($scope.runStackLoop('auth-create', 'after', i, data));
+  }
+
+  Q.all(promises).spread(function() {
+    return callback(data.user);
+  }).fail(function(err) {
+    return callback(null, err);
+  });
+};
+
+... Then within your module code ...
+
+$scope.afterAuthCreate({user: userAcct, details: originalDetails}, function(userAcct, err) {
+  ... do something with the user ...
+});
+```
+
+This allows other developers to create modules which can utilize the middleware system.
+
 ## CLI Usage
 
 You will use VERN inside your server to create routes, controllers, and models.
