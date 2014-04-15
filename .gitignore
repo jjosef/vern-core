@@ -6,3 +6,4 @@ testing
 config.js
 example/test.js
 vern_config.js
+npm-debug.log
