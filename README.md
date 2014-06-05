@@ -20,7 +20,7 @@ For the library
 
 For the CLI tool
 
-`npm install -g vern-core`
+`npm install -g vern-cli`
 
 ## Contributing
 
