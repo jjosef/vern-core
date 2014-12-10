@@ -6,6 +6,12 @@ var util = require('util');
 
 new vern().then(function($vern) {
 
+  $vern.on('testEvent', function(data) {
+    console.log(data);
+  });
+
+  $vern.emit('testEvent', {some: 'data'});
+
   var PostModel = function(){
     this.title = null;
     this.author = null;
