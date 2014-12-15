@@ -7,11 +7,11 @@ describe("Setup vern", function() {
     describe("when an event is called", function() {
       it("should call the event method with {some: 'data'}", function() {
         $vern.on('testEvent', function (data) {
-          console.log(data);
+          console.log(arguments);
           expect(data).to.have.property('some');
         });
 
-        $vern.emit('testEvent', {some: 'data'});
+        $vern.emit('testEvent', {some: 'data'}, 'test', ['Joe', 'Mary']);
       });
     });
   });
