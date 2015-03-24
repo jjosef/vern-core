@@ -1,6 +1,6 @@
 {
   "name": "vern-core",
-  "version": "0.4.25",
+  "version": "0.4.26",
   "description": "Community version. VERN is the virtual elastic resource node. The new method for creating applications. Built on a Mongo/Restify/AngularJS/LESS Stack.",
   "main": "lib/index.js",
   "directories": {
@@ -39,7 +39,7 @@
     "fs-extra": "latest",
     "validator": "latest",
     "minimist": "latest",
-    "mongodb": "latest",
+    "mongodb": "1.4.35",
     "restify": "latest",
     "slugify": "latest",
     "node-uuid": "latest",
