@@ -145,7 +145,7 @@ $scope.routes // Best not to alter this, but it holds all the routing informatio
 $scope.initStack // Best not to alter this, but it holds all the middleware for this controller, utilize $scope.use() instead
 ```
 
-These are the models you can utilize inside a controller, in addition, you can create your own custom methods for handling your own routes.
+These are the basic methods you can utilize inside a controller, we will cover advanced topics and methods later.
 
 ### $scope.init(configOptions)
 
@@ -162,4 +162,84 @@ configOptions: (optional)
 }
 ```
 
+### $scope.addRoute(routeOptions)
+
+routeOptions:
+
+```
+{
+  method: 'get', // optional, defaults to 'get'
+  path: '/routing/path', set the routing path
+  controller: $scope.myControllerForRoutingPath, // Set the controller method to be called. This should be a function with the following parameters: (req, res, next)
+  version: '1.0.0', // optional, set a custom version for this method
+}
+```
+
 ## Model Specifics
+
+Let's dissect creating a model:
+
+```
+$vern.models.MyModel = new $vern.model().extend(MyModel, {
+  collection: 'my_models',
+  indexes: [], // set indexes for the DB collection
+  exclude: [], // exclude certain parameters from public output
+  validations: {}, // setup validations, see below
+  validation_exceptions: {}, // setup exceptions to validations
+  non_editable: [] // set parameters non-editable
+}, null);
+```
+
+`new $vern.model()` - create a new BaseModel
+
+`.extend(MyModel, options, parentModel)` - extend BaseModel functionality with the `options` and optional `parentModel`
+
+* validations
+
+This is an object which lists parameters. Vern has a few built in validations and you can write custom validation functions as well. Here is an example and list of the built-in validations:
+
+`'checkPassword'` - Will validate the parameter along with the parameter name appended with `_confirm` so you could have submitted a `password` parameter, along with a `password_confirm` parameter to be checked against.
+
+`'checkEmail'` - Will validate the parameter is an email address.
+
+`'checkUsername'` - Will validate the parameter is at least 3 characters in length.
+
+`'notEmpty'` - Will validate the parameter is at least 1 character long.
+
+`'notNull'` - Will validate the parameter is not null or it must exist.
+
+`'isCreditCard'` - Will validate the parameter is a credit card number.
+
+`'isNumber'` - Will validate the parameter is a number, or will return 0.
+
+`'isDate'` - Will validate the parameter is a date or date string, or returns null.
+
+Custom validation functions:
+
+Here is an example of a custom validation for a date:
+
+```
+validations: {
+  start_date: function(data, fields) {
+    if(typeof data === 'string') {
+      return new Date(data);
+    }
+
+    return data;
+  }
+}
+```
+
+All custom validation functions take 2 parameters, 'data' and 'fields' - where 'data' is the data being submitted, and 'fields' is all the other parameters submitted that you can compare against if needed.
+
+* validation_exceptions
+
+You can setup validation exceptions for certain methods ('get', 'post', 'put', 'delete') like so:
+
+```
+validation_exceptions: {
+  put: ['password']
+}
+```
+
+In this example you want to avoid validating the 'password' parameter on PUT requests, which makes sense since you don't want to check the password, and probably would want to also set password to `non-editable` which would prevent a standard CRUD method from allowing you to update a password. Another way around this is to utilize middleware to encode a password or check if a password is present in a request, and fill it in if it isn't.
