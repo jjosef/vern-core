@@ -1,6 +1,10 @@
 #Copyright Notice
 
-Vern is copyright 2014 uh-sem-blee, Co. Built by typefoo.
+Vern is copyright 2015 uh-sem-blee, Co. Built by typefoo.
+
+## What is Vern?
+
+Vern at its core is just an API builder utilizing a Model -> Controller interface. It is meant to scaffold and scale easily for small projects to enterprise clusters.
 
 ## Documentation
 
