@@ -251,3 +251,54 @@ validation_exceptions: {
 ```
 
 In this example you want to avoid validating the 'password' parameter on PUT requests, which makes sense since you don't want to check for a password, and probably would want to also set password to `non-editable` which would prevent a standard CRUD method from allowing you to update a password. Another way around this is to utilize middleware to encode a password or check if a password is present in a request, and fill it in if it isn't.
+
+### Model methods
+
+When using a model inside a controller method, you have a subset of methods you can utilize.
+
+Here's a quick example of a common usage of a model:
+
+```js
+$scope.myController = function(req, res, next) {
+  new $vern.models.MyModel().query({name: req.params.name}, function(err, models) {
+    if(err) {
+      return res.resp.handleError(500, err);
+    }
+
+    var output = [];
+    for(var i = 0; i < models.length; i++) {
+      output.push(models[i].output()); // we want to do this because we may not want to return a raw model data, calling the .output() method on a model will parse any excluded parameters from output.
+    }
+
+    res.resp.data(output);
+    res.resp.send();
+  });
+};
+```
+
+`model.output([override])` - Output a model object ready for consumption. Pass `true` as the `override` if you want to skip exclusions from your model config.
+
+`model.stub()` - This is useful if you want to output a smaller version of your model. Useful when output large quantities of data, or overview information. The default `stub()` method just returns the `_id`, but you can override the stub method in your model creation like so:
+
+```js
+MyModel.prototype.stub = function() {
+  return {
+    _id: this._id,
+    name: this.name
+  };
+};
+```
+
+`model.query(parameters, [options], callback)` - Query the database for specific model `parameters`, optional `options` (an object which can contain things like `{limit: 10, skip: 10, fields: ['name', 'blob'], sort: {'name', -1}}`), and handle the `callback` which takes two variables, `err` (if any error occurs) and `models` (which will be an array of models).
+
+`model.queryRaw(options, callback)` - A simpler version of `query` which sends any options you specify to the data collector.
+
+`model.getById(id, callback)` - Query the database for a data item with specific ID. Will only return one result instead of an array.
+
+`model.count([parameters], callback)` - Query the specific model collection for the number of entries that exist with optional `parameters`. The callback will have 2 variables, `err` and `count` (which is an integer).
+
+`model.sum(match, field, callback)` - Query the model collection and return a sum for a parameters `match` on a specific `field`. The callback will have 2 variables, `err` and `sum` (which is a number).
+
+`model.save(callback)` - One of the most important methods used for updating your models and saving to the database. The callback should be a function with 2 variables `err` and `model` which is an updated version of the model.
+
+`model.del(callback)` - Delete a model entry from the database. Callback has 2 variables, `err` and `confirm`
