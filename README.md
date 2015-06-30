@@ -10,7 +10,7 @@ Vern -- at its core -- is a powerful API builder utilizing a Model -> Controller
 
 The best method for utilizing Vern is by using the [vern-cli](http://www.vern.io) module to create a full-stack boilerplate for your project.
 
-However, if you're interested in using Vern as a low level API builder, continue reading.
+However, if you're interested in using Vern as a low level API builder, please continue reading.
 
 ## Install
 
