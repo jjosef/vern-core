@@ -4,11 +4,11 @@ Vern is copyright 2015 uh-sem-blee, Co. Built by typefoo.
 
 ## What is Vern?
 
-Vern at its core is just an API builder utilizing a Model -> Controller interface. It is meant to scaffold and scale easily for small projects to enterprise clusters.
+Vern -- at its core -- is a powerful API builder utilizing a Model -> Controller interface. It is meant to scaffold and scale easily from small projects to enterprise clusters.
 
 ## Documentation
 
-The best method for utilizing Vern is by using the [vern-cli](http://www.vern.io) module
+The best method for utilizing Vern is by using the [vern-cli](http://www.vern.io) module to create a full-stack boilerplate for your project.
 
 However, if you're interested in using Vern as a low level API builder, continue reading.
 
@@ -53,7 +53,7 @@ git commit -m "#_issue_number_ _component_name_ _description_of_commit_"
 
 ## Structures
 
-Vern at its core is just an API builder platform with a simple Model -> Controller setup.
+Vern consists of 2 main structures, Controllers & Models.
 
 ### Controllers & Models
 
@@ -246,4 +246,4 @@ validation_exceptions: {
 }
 ```
 
-In this example you want to avoid validating the 'password' parameter on PUT requests, which makes sense since you don't want to check the password, and probably would want to also set password to `non-editable` which would prevent a standard CRUD method from allowing you to update a password. Another way around this is to utilize middleware to encode a password or check if a password is present in a request, and fill it in if it isn't.
+In this example you want to avoid validating the 'password' parameter on PUT requests, which makes sense since you don't want to check for a password, and probably would want to also set password to `non-editable` which would prevent a standard CRUD method from allowing you to update a password. Another way around this is to utilize middleware to encode a password or check if a password is present in a request, and fill it in if it isn't.
