@@ -185,6 +185,8 @@ routeOptions:
 
 ### Connecting to controllers
 
+Vern's boilerplate frontend, written in AngularJS, comes with a [vern-angular-standard](https://ww.github.com/typefoo/vern-angular-standard) module which provides several directives and services to interact with the Vern API, and is the recommended way of connecting via web apps.
+
 * GET - Get methods expect certain query parameters, all of which are optional:
 
 ```
