@@ -183,6 +183,33 @@ routeOptions:
 }
 ```
 
+### Connecting to controllers
+
+* GET - Get methods expect certain query parameters, all of which are optional:
+
+```
+fields {String} A JSON String which is parsed into the fields to include or exclude (eg: {'a': true} or {'a': false}), if not provided it returns all.
+skip {Number} `(defaults to 0)`
+limit {Number} `(defaults to 10)`
+sort {String|Object|Array} As a string, a field to sort by. As an object it represents a Mongo search. As an array it represents multiple fields to sort by
+sortDir {Number|Array} As a number, -1 or 1 to determine the sort direction. As an array, the direction to sort the field in the `req.params.sort` array match.
+conditions {String} A JSON string which is parsed into and object of key, value pairs
+search {String} A JSON string which is parsed into and object of key, value pairs. The value of which is a regular expression
+searchOptions {String} The regular expression options to be passed with all search parameters. eg: 'i' to ignore case
+```
+
+* POST - Posting to a controller
+
+Expects a JSON object posted to the controller. If you supply an `_id` it will try to update the object with that ID, or return a 404 error.
+
+* PUT - Updating a model in a controller
+
+Expects a JSON object PUT to the controller route, will return an error if the `_id` is missing or invalid.
+
+* DELETE - Delete a model in a controller
+
+Best used with `vern-authentication` to ensure data isn't deleted unless authorized. Send a JSON packet `{_id: 'id_of_object'}` representing the object to be deleted.
+
 ## Model Specifics
 
 Let's dissect creating a model:
