@@ -278,7 +278,7 @@ $scope.myController = function(req, res, next) {
 
 `model.output([override])` - Output a model object ready for consumption. Pass `true` as the `override` if you want to skip exclusions from your model config.
 
-`model.stub()` - This is useful if you want to output a smaller version of your model. Useful when output large quantities of data, or overview information. The default `stub()` method just returns the `_id`, but you can override the stub method in your model creation like so:
+`model.stub()` - This is useful if you want to output a smaller version of your model. Useful when outputting large quantities of data, or overview information. The default `stub()` method just returns the `_id`, but you can override the stub method in your model creation like so:
 
 ```js
 MyModel.prototype.stub = function() {
