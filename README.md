@@ -86,6 +86,10 @@ new vern().then(function($vern) {
 
     $scope.handleCustom = function(req, res, next) {
       // do something
+      // if you encounter an error, you can use the built-in error handler method:
+      // res.resp.handleError(500, new Error('Something went wrong'));
+      res.resp.data({hello: true}); // data to return
+      res.resp.send();
       return next();
     };
 
