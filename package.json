@@ -1,13 +1,13 @@
 {
   "name": "vern-core",
-  "version": "0.6.2",
-  "description": "Community version. VERN is the virtual elastic resource node. The new method for creating applications. Built on a Mongo/Restify/AngularJS/LESS Stack.",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "description": "Vern Core is the backend for all Vern-based applications. It is a very easy to use and powerful API builder.",
   "main": "lib/index.js",
   "directories": {
     "test": "test"
-  },
-  "scripts": {
-    "test": "mocha specs"
   },
   "repository": {
     "type": "git",
@@ -15,36 +15,28 @@
   },
   "keywords": [
     "vern",
-    "mvc",
-    "rest",
+    "vern-core",
     "api",
-    "angularjs",
-    "mongodb",
-    "less",
-    "framework",
     "platform"
   ],
   "author": "uh-sem-blee",
-  "license": "AGPL, Copyright 2014 uh-sem-blee, Co.",
+  "license": "AGPL",
   "bugs": {
     "url": "https://github.com/uh-sem-blee/vern-core/issues"
   },
   "homepage": "https://github.com/uh-sem-blee/vern-core",
   "devDependencies": {
-    "chai": "^1.10.0",
-    "mocha": "^2.0.1",
-    "mocha-clean": "^0.4.0"
+    "chai": "^2.1.0"
   },
   "dependencies": {
-    "fs-extra": "~0.16.5",
-    "validator": "~3.35.0",
-    "minimist": "~1.1.1",
-    "mongodb": "~2.0.44",
+    "camo": "~0.8.0",
+    "fs-extra": "~0.24.0",
+    "mongodb": "~2.0",
+    "node-uuid": "~1.4.3",
+    "node.extend": "~1.1.5",
+    "q": "~1.4.1",
     "restify": "~4.0.3",
     "slugify": "~0.1.1",
-    "node-uuid": "~1.4.3",
-    "node.extend": "~1.1.4",
-    "q": "~1.2.0",
-    "colors": "~1.0.3"
+    "validator": "~4.1.0"
   }
 }

@@ -1,5 +1,0 @@
---colors
---recursive
---ui tdd
---reporter spec
---require mocha-clean
